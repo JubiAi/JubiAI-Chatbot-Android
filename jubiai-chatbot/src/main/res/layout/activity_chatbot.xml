@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.activity.ChatBotActivity">
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include
+        android:id="@+id/empty"
+        layout="@layout/item_empty"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/chat_start_cont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="right"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92">
+
+        <TextView
+            android:id="@+id/chat_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_carousel_option"
+            android:padding="16dp"
+            android:text="Hi there.\nI am your Assistant 🙂.\nThe smartest way to get\nanswers to all your queries.\nTry me out."
+            android:textColor="@color/secondary_text_black"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+
+        <ImageView
+            android:id="@+id/start"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
+            android:padding="2dp"
+            android:src="@drawable/ic_typing"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
