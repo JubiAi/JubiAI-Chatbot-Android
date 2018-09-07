@@ -13,8 +13,8 @@ ext {
 
     libraryDescription = 'Android Chatbot'
 
-    siteUrl = 'https://github.com/sayagodshala/jubiai-chatbot'
-    gitUrl = 'https://github.com/sayagodshala/jubiai-chatbot.git'
+    siteUrl = 'https://github.com/JubiAi/JubiAI-Chatbot-Android'
+    gitUrl = 'https://github.com/JubiAi/JubiAI-Chatbot-Android.git'
 
     libraryVersion = '1.3.45'
 
