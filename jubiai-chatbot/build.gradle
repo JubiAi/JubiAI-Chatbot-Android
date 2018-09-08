@@ -18,9 +18,9 @@ ext {
 
     libraryVersion = '1.3.45'
 
-    developerId = 'sayagodshala'
-    developerName = 'Saya Godshala'
-    developerEmail = 'sayagodshala@gmail.com'
+    developerId = 'darpan'
+    developerName = 'Darpan Raut'
+    developerEmail = 'darpan@jubi.ai'
 
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
@@ -117,7 +117,7 @@ dependencies {
     /**
      * Amazon services for file operations
      */
-    implementation ("com.amazonaws:aws-android-sdk-mobile-client:$amazon") { transitive = true }
+    implementation("com.amazonaws:aws-android-sdk-mobile-client:$amazon") { transitive = true }
     implementation "com.amazonaws:aws-android-sdk-s3:$amazon"
     implementation "com.amazonaws:aws-android-sdk-cognito:$amazon"
 
