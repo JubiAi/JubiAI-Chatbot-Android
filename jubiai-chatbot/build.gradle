@@ -5,18 +5,18 @@ apply plugin: 'com.android.library'
  */
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'jubiai-chatbot'
+    bintrayName = 'jubiai-chatbot-android'
 
-    publishedGroupId = 'com.sayagodshala'
-    libraryName = 'jubiai-chatbot'
-    artifact = 'jubiai-chatbot'
+    publishedGroupId = 'com.jubi.ai'
+    libraryName = 'jubiai-chatbot-android'
+    artifact = 'chatbot'
 
     libraryDescription = 'Android Chatbot'
 
     siteUrl = 'https://github.com/JubiAi/JubiAI-Chatbot-Android'
     gitUrl = 'https://github.com/JubiAi/JubiAI-Chatbot-Android.git'
 
-    libraryVersion = '1.4'
+    libraryVersion = '0.1'
 
     developerId = 'darpan'
     developerName = 'Darpan Raut'
