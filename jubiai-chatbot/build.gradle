@@ -5,11 +5,6 @@ apply plugin: 'com.android.library'
  */
 ext {
 
-    retrofit = '2.3.0'
-    amazon = '2.6.27'
-    room = '1.1.1'
-    targetSDK = '27.1.1'
-
     bintrayRepo = 'maven'
     bintrayName = 'jubiai-chatbot'
 
@@ -58,10 +53,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:$targetSDK"
+    implementation "com.android.support:appcompat-v7:$project.ext.targetSDK"
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-    implementation "com.android.support:design:$targetSDK"
-    implementation "com.android.support:recyclerview-v7:$targetSDK"
+    implementation "com.android.support:design:$project.ext.targetSDK"
+    implementation "com.android.support:recyclerview-v7:$project.ext.targetSDK"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -69,10 +64,10 @@ dependencies {
     /**
      * Room, Livedata, Viewmodel
      */
-    implementation "android.arch.persistence.room:runtime:$room"
-    annotationProcessor "android.arch.persistence.room:compiler:$room"
-    implementation "android.arch.lifecycle:extensions:$room"
-    annotationProcessor "android.arch.lifecycle:compiler:$room"
+    implementation "android.arch.persistence.room:runtime:$project.ext.room"
+    annotationProcessor "android.arch.persistence.room:compiler:$project.ext.room"
+    implementation "android.arch.lifecycle:extensions:$project.ext.room"
+    annotationProcessor "android.arch.lifecycle:compiler:$project.ext.room"
 
     /**
      * Json presentation
@@ -82,8 +77,8 @@ dependencies {
     /**
      * Image Renderers
      */
-    implementation 'com.github.bumptech.glide:glide:4.6.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+    implementation "com.github.bumptech.glide:glide:$project.ext.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$project.ext.glide"
 
     /**
      * Message input field
@@ -93,12 +88,10 @@ dependencies {
     /**
      * Retrofit, Okhttp, Adapter and rx
      */
-    implementation "com.squareup.retrofit2:retrofit:$retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
-    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofit"
+    implementation "com.squareup.retrofit2:retrofit:$project.ext.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$project.ext.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$project.ext.retrofit"
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
-//    implementation 'io.reactivex:rxjava:1.3.3'
-//    implementation 'io.reactivex:rxandroid:1.2.1'
 
     /**
      * Speech
@@ -118,9 +111,11 @@ dependencies {
     /**
      * Amazon services for file operations
      */
-    implementation("com.amazonaws:aws-android-sdk-mobile-client:$amazon") { transitive = true }
-    implementation "com.amazonaws:aws-android-sdk-s3:$amazon"
-    implementation "com.amazonaws:aws-android-sdk-cognito:$amazon"
+    implementation("com.amazonaws:aws-android-sdk-mobile-client:$project.ext.amazon") {
+        transitive = true
+    }
+    implementation "com.amazonaws:aws-android-sdk-s3:$project.ext.amazon"
+    implementation "com.amazonaws:aws-android-sdk-cognito:$project.ext.amazon"
 
     /**
      * Image Pickers
