@@ -522,7 +522,7 @@ public class ChatBotFragment extends Fragment implements ChatBotView, View.OnCli
 
                 final String[] items = chatBotConfig.getPersistentMenu().split(",");
 
-                ListPopupWindow listPopupWindow = new ListPopupWindow(
+                final ListPopupWindow listPopupWindow = new ListPopupWindow(
                         getActivity());
                 listPopupWindow.setAdapter(new ArrayAdapter(
                         getActivity(),
@@ -537,6 +537,7 @@ public class ChatBotFragment extends Fragment implements ChatBotView, View.OnCli
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         chatBotPresenter.sendChat(items[i]);
                         chatBotPresenter.startFakeTypingMessageListener();
+                        listPopupWindow.dismiss();
                     }
                 });
                 listPopupWindow.show();

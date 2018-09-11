@@ -52,11 +52,11 @@ dependencies {
     implementation('com.google.firebase:firebase-messaging:11.8.0') {
         exclude module: 'support-v4'
     }
-//    implementation project(':jubiai-chatbot')
+    implementation project(':jubiai-chatbot')
     implementation 'com.facebook.stetho:stetho:1.5.0'
     implementation 'com.google.code.gson:gson:2.8.2'
 //    implementation 'com.sayagodshala:jubiai-chatbot:1.3.45'
-    implementation 'com.jubi.ai:jubiai-chatbot:1.2'
+//    implementation "com.jubi.ai:jubiai-chatbot:$project.ext.chatbot"
 }
 
 apply plugin: 'com.google.gms.google-services'

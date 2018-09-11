@@ -16,7 +16,7 @@ Android Plugin to implement chatbot
 The **Auth UI** library is pushed to jcenter, so you need to add the following dependency to your app's `build.gradle`.
 
 ```gradle
-compile 'com.sayagodshala:jubiai-chatbot:1.0.0'
+compile 'com.jubi.ai:jubiai-chatbot:1.2'
 ```
 
 ### As a module

@@ -180,14 +180,16 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageViewHold
                             }
                         });
 
-                        if (chat.getOptions().size() > 2) {
-                            gridLayoutManager = new GridLayoutManager(context, 2);
-                            recyclerView.setLayoutManager(gridLayoutManager);
-                        } else {
-                            linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
-                            recyclerView.setLayoutManager(linearLayoutManager);
-                        }
+//                        if (chat.getOptions().size() > 2) {
+//                            gridLayoutManager = new GridLayoutManager(context, 2);
+//                            recyclerView.setLayoutManager(gridLayoutManager);
+//                        } else {
+//                            linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+//                            recyclerView.setLayoutManager(linearLayoutManager);
+//                        }
 
+                        linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+                        recyclerView.setLayoutManager(linearLayoutManager);
 
                         recyclerView.setAdapter(chatMessageOptionAdapter);
                         chatMessageOptionAdapter.addItems(chat);
@@ -207,8 +209,8 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageViewHold
                             mChildItemClickListener.onResult(view);
                         }
                     });
-                    gridLayoutManager = new GridLayoutManager(context, 2);
-                    recyclerView.setLayoutManager(gridLayoutManager);
+                    linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+                    recyclerView.setLayoutManager(linearLayoutManager);
                     recyclerView.setAdapter(chatMessageOptionAdapter);
                     chatMessageOptionAdapter.addItems(chat);
                     recyclerView.addItemDecoration(itemDecoration);

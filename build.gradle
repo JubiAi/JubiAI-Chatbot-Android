@@ -23,6 +23,9 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
     }
+    project.ext {
+        chatbot = "1.4" //String
+    }
 }
 
 task clean(type: Delete) {
