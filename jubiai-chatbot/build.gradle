@@ -16,7 +16,7 @@ ext {
     siteUrl = 'https://github.com/JubiAi/JubiAI-Chatbot-Android'
     gitUrl = 'https://github.com/JubiAi/JubiAI-Chatbot-Android.git'
 
-    libraryVersion = '1.1'
+    libraryVersion = '1.2'
 
     developerId = 'darpan'
     developerName = 'Darpan Raut'
