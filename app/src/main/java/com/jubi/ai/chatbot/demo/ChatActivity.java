@@ -45,9 +45,9 @@ public class ChatActivity extends AppCompatActivity {
         chatBotConfig.setMaterialTheme(MaterialTheme.EARLY_SALARY);
         chatBotConfig.setTitle("Earl");
         chatBotConfig.setSubTitle("Hello! Ask me anything");
-        chatBotConfig.setProjectId("JUBI15Q9uk_EarlySalary");
+        chatBotConfig.setProjectId("JUBIzMjyA_sasasasas");
         chatBotConfig.setPath("android");
-        chatBotConfig.setHost("https://early-salary-backend.herokuapp.com");
+        chatBotConfig.setHost("https://product-test-backend.herokuapp.com");
         chatBotConfig.setFcmToken(FirebaseInstanceId.getInstance().getToken());
         chatBotConfig.setWidgetRequired(false);
         chatBotConfig.setPersistentMenu("Start Over," +
