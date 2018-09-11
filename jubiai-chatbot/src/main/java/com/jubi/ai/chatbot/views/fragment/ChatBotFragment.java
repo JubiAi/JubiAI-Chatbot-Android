@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -84,6 +86,10 @@ import net.gotev.speech.SpeechUtil;
 import net.gotev.speech.ui.SpeechProgressView;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -556,7 +562,7 @@ public class ChatBotFragment extends Fragment implements ChatBotView, View.OnCli
         if (!Util.textIsEmpty(whichIntent) && whichIntent.equalsIgnoreCase("camera")) {
             File file = new File(cameraFile.getPath());
             if (file.exists()) {
-                uploadWithTransferUtility(file);
+                uploadWithTransferUtility(decodeFile(file));
             } else {
                 UiUtils.showToast(getActivity(), "Some problem occurred while capturing picture!");
             }
@@ -565,7 +571,7 @@ public class ChatBotFragment extends Fragment implements ChatBotView, View.OnCli
             if (!Util.textIsEmpty(realPath)) {
                 File file = new File(realPath);
                 if (file.exists()) {
-                    uploadWithTransferUtility(file);
+                    uploadWithTransferUtility(decodeFile(file));
                 } else {
                     UiUtils.showToast(getActivity(), "Some problem occurred while selecting document!");
                 }
@@ -812,6 +818,62 @@ public class ChatBotFragment extends Fragment implements ChatBotView, View.OnCli
 
         Log.d("YourActivity", "Bytes Transferrred: " + uploadObserver.getBytesTransferred());
         Log.d("YourActivity", "Bytes Total: " + uploadObserver.getBytesTotal());
+    }
+
+
+    private File decodeFile(File f) {
+        Bitmap b = null;
+
+        //Decode image size
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inJustDecodeBounds = true;
+
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(f);
+            BitmapFactory.decodeStream(fis, null, o);
+            fis.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        int IMAGE_MAX_SIZE = 1024;
+        int scale = 1;
+        if (o.outHeight > IMAGE_MAX_SIZE || o.outWidth > IMAGE_MAX_SIZE) {
+            scale = (int) Math.pow(2, (int) Math.ceil(Math.log(IMAGE_MAX_SIZE /
+                    (double) Math.max(o.outHeight, o.outWidth)) / Math.log(0.5)));
+        }
+
+        //Decode with inSampleSize
+        BitmapFactory.Options o2 = new BitmapFactory.Options();
+        o2.inSampleSize = scale;
+        try {
+            fis = new FileInputStream(f);
+            b = BitmapFactory.decodeStream(fis, null, o2);
+            fis.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Log.d(TAG, "Width :" + b.getWidth() + " Height :" + b.getHeight());
+
+        File destFile = new File(Environment
+                .getExternalStorageDirectory()
+                + "/"
+                + BuildConfig.APPLICATION_ID, "img_" + System.currentTimeMillis() + ".png");
+        try {
+            FileOutputStream out = new FileOutputStream(destFile);
+            b.compress(Bitmap.CompressFormat.PNG, 80, out);
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return destFile;
     }
 
     public void setProgressDialog(String title, String message) {
