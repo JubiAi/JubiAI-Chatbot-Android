@@ -56,7 +56,7 @@ public class ChatMessageCarouselWithOutMediaAdapter extends RecyclerView.Adapter
         ChatOption item = items.get(position);
         holder.title.setText(item.getTitle());
         if (!Util.textIsEmpty(item.getText())) {
-            holder.text.setText(item.getText());
+            holder.text.setText(item.getText() + "s sasfa sf asf asf asf asf asf kkasa sfkas fkasf kjasfasf kjbasfsa");
         }
 
         holder.text.setVisibility(Util.textIsEmpty(item.getText()) ? View.GONE : View.VISIBLE);
