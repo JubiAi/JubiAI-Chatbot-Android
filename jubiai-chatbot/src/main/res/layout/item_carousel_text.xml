@@ -14,7 +14,7 @@
         android:paddingRight="16dp"
         android:paddingBottom="8dp"
         android:text="Message Received"
-        android:textStyle="bold"
         android:textColor="@color/text"
-        android:textSize="14sp" />
+        android:textSize="12sp"
+        android:textStyle="bold" />
 </LinearLayout>

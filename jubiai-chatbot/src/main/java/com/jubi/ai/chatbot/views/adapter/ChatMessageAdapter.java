@@ -3,6 +3,7 @@ package com.jubi.ai.chatbot.views.adapter;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -184,7 +186,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageViewHold
 //                            gridLayoutManager = new GridLayoutManager(context, 2);
 //                            recyclerView.setLayoutManager(gridLayoutManager);
 //                        } else {
-//                            linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+//                            linearLayoutManager = new CustomLinearLayoutManager(context, CustomLinearLayoutManager.VERTICAL, false);
 //                            recyclerView.setLayoutManager(linearLayoutManager);
 //                        }
 
@@ -223,7 +225,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageViewHold
                         String url = chat.getOptions().get(0).getImage();
 
                         MyLinearLayoutManager layoutManager = new MyLinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-
+                        holder.carouselCont.setLayoutManager(layoutManager);
                         if (Util.textIsEmpty(url)) {
                             chatMessageCarouselWithOutMediaAdapter = new ChatMessageCarouselWithOutMediaAdapter(context, chat.getOptions(), materialTheme);
                             chatMessageCarouselWithOutMediaAdapter.setItemClickListener(new IResultListener<View>() {
@@ -233,6 +235,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageViewHold
                                 }
                             });
                             holder.carouselCont.setAdapter(chatMessageCarouselWithOutMediaAdapter);
+                            holder.carouselCont.setNestedScrollingEnabled(false);
                         } else {
                             chatMessageCarouselAdapter = new ChatMessageCarouselAdapter(context, chat.getOptions(), materialTheme);
                             chatMessageCarouselAdapter.setItemClickListener(new IResultListener<View>() {
@@ -242,8 +245,9 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageViewHold
                                 }
                             });
                             holder.carouselCont.setAdapter(chatMessageCarouselAdapter);
+                            holder.carouselCont.setNestedScrollingEnabled(false);
                         }
-                        holder.carouselCont.setLayoutManager(layoutManager);
+
                     }
                     break;
                 case TYPING:
@@ -299,6 +303,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageViewHold
         }
         applyTheme(holder);
     }
+
 
     @Override
     public int getItemCount() {

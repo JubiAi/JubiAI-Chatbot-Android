@@ -39,6 +39,9 @@ public class MyLinearLayoutManager extends LinearLayoutManager {
                 if (i == 0) {
                     height = mMeasuredDimension[1];
                 }
+
+                setMeasuredDimension(width, height);
+
             } else {
                 measureScrapChild(recycler, i,
                         widthSpec,
