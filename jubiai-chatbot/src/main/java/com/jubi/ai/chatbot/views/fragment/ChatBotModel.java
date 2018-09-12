@@ -52,8 +52,8 @@ public class ChatBotModel {
 
     public void insertChat(String chatMessage) {
         deleteTypingMessage();
-//        database.chatMessageDao().insertChat(makeChatFromMessage(chatMessage));
-        database.chatMessageDao().insertChat(textChatMessageWithCarouselOptions());
+        database.chatMessageDao().insertChat(makeChatFromMessage(chatMessage));
+//        database.chatMessageDao().insertChat(textChatMessageWithCarouselOptions());
 //        database.chatMessageDao().insertChat(textChatMessageWithOptions());
     }
 
