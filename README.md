@@ -1,47 +1,44 @@
 # Jubi.AI Android ChatBot
 Android Plugin to implement chatbot
 
-# What's in the box
-
-- point 1
-- point 2
-- point 3
-- point 4
-- point 5
-
 # Setup
 ## 1. Include in your project
 
-### Using Gradle
-The **Auth UI** library is pushed to jcenter, so you need to add the following dependency to your app's `build.gradle`.
+#### Using Gradle
+The **JubiAi Chatbot** library is pushed to jcenter, so you need to add the following dependency to your app's `build.gradle`.
 
 ```gradle
-compile 'com.jubi.ai:jubiai-chatbot:1.2'
+repositories {
+    ...
+    maven { url 'https://dl.bintray.com/darpan/maven/' }
+}
+
+dependencies {
+    ...
+    implementation 'com.jubi.ai:jubiai-chatbot:1.8'
+}
 ```
 
-### As a module
-If you can't include it as gradle dependency, you can also download this GitHub repo and copy the auth-ui folder to your project.
+## 2. Integration
 
-
-## 2. Usage
-
-Next step is to configure the `AuthUISettings`.
+Next step is to configure the `jubiai-chatbot`.
 
 Example:
 
 ```java
 private ChatBotConfig chatBotConfig() {
-    ChatBotConfig chatBotConfig = new ChatBotConfig();
-    chatBotConfig.setAppLogo(R.drawable.ic_launcher);
-    chatBotConfig.setMaterialTheme(MaterialTheme.BLUE);
-    chatBotConfig.setTitle("YOUR PROJECT TITLE");
-    chatBotConfig.setProjectId("YOUR PROJECT ID");
-    chatBotConfig.setHost("https://somedomain.com");
-    //        attachment by default is true
-    //        chatBotConfig.setAttachmentRequired(false);
-    //        speech by default is false
-    //        chatBotConfig.setSpeechRequired(true);
-    chatBotConfig.setFcmToken(FirebaseInstanceId.getInstance().getToken());
+        ChatBotConfig chatBotConfig = new ChatBotConfig();
+        chatBotConfig.setAppLogo("drawable resource");
+        chatBotConfig.setMaterialTheme(MaterialTheme.RED);
+        chatBotConfig.setTitle("Some Title");
+        chatBotConfig.setSubTitle("Some subtitle");
+        chatBotConfig.setProjectId("Some project id");
+        chatBotConfig.setPath("android");
+        chatBotConfig.setHost("some domain like https://xyz.com");
+        chatBotConfig.setFcmToken(FirebaseInstanceId.getInstance().getToken());
+        chatBotConfig.setAttachmentRequired(by default is true);
+        chatBotConfig.setPersistentMenu("Comma seperated menus");
+        return chatBotConfig;
 }
 ```
 Next step is to save ChatBotConfig.
@@ -50,30 +47,25 @@ Next step is to save ChatBotConfig.
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     ...
-    ChatBotActivity.saveConfig(this, chatBotConfig());
+    ChatBotActivity.setUp(this, chatBotConfig());
 }
 ```
 
-Next step is to check and give access to Overlay Permissions for displaying Widget.
+Next step is to setup Widget(if required) in your layout, click listener is handled internally.
 
-```java
-
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    ...
-    ChatBotActivity.checkOverlayPermsForWidget(this);
-}
+```xml
+<com.jubi.ai.chatbot.views.widget.InAppChatWidget
+        android:id="@+id/inAppChatWidget"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:widgetIcon="@drawable/ic_android"></com.jubi.ai.chatbot.views.widget.InAppChatWidget>
 ```
-
-Final step is to implement `ChatBotFragmentListener` interface in your target activity where `ChatBotFragment` is loaded with corresponding methods.
-
-```java
-public class ChatActivity extends AppCompatActivity implements ChatBotFragmentListener {
-
-
-}
-```
-
 ## 3. Set Up Android FCM
 
 FCM push notifications setup
@@ -126,38 +118,12 @@ Finally, click the settings cog and select ‘Project settings’, then ‘Cloud
 
 Open your Jubi.AI app’s settings and select ‘Jubi.AI for Android’. Then find the ‘Enable Google Cloud Messaging’ section. Here you'll be able to paste and save your Server API key.
 
-### Step 4. Setting your FCM icon
+### Step 5. Save FCM token
 
->Notifications icon design guidelines
-We recommend following these [material design guidelines](https://material.google.com/patterns/notifications.html) for producing this icon.
-
-### Step 5. Push FCM token to Jubi.AI
-
-After you've obtained the token, you can send it to your app server and store it using your preferred method. For Example.
+After you've obtained the token, you can save FCM token in chatbot. For Example.
 
 ```java
-public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
-
-    ...
-
-    @Override
-    public void onTokenRefresh() {
-        // Get updated InstanceID token.
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d(TAG, "Refreshed token: " + refreshedToken);
-
-        // If you want to send messages to this application instance or
-        // manage this apps subscriptions on the server side, send the
-        // Instance ID token to your app server.
-        sendRegistrationToServer(refreshedToken);
-    }
-    // [END refresh_token]
-
-    ...
-    private void sendRegistrationTokenToServer(String token) {
-        // TODO: Implement this method to send token to your app server.
-        ChatBotApp.pushFCMToken(this, token);
-    }
+chatBotConfig.setFcmToken(FirebaseInstanceId.getInstance().getToken());
 ```
 
 
