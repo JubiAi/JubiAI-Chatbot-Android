@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         chatbot {
+//            gpjpassword subhadeep007
             keyAlias 'chatbot'
             keyPassword '123456'
             storeFile file('../extras/jubiai-chatbot-demo')
