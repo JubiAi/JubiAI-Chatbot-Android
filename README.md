@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     ...
-    implementation 'com.jubi.ai:jubiai-chatbot:1.8'
+    implementation 'com.jubi.ai:jubiai-chatbot:1.10'
 }
 ```
 
