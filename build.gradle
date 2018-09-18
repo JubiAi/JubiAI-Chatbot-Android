@@ -24,7 +24,7 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
     project.ext {
-        chatbot = "1.9" //String
+        chatbot = "1.10" //String
         retrofit = '2.3.0'
         amazon = '2.6.27'
         room = '1.1.1'

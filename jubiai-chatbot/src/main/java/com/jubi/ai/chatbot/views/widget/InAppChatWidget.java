@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.jubi.ai.chatbot.R;
@@ -62,7 +63,7 @@ public class InAppChatWidget extends RelativeLayout {
     private void initAttributes(@Nullable AttributeSet attrs) {
         TypedArray styleAttrs = getContext().obtainStyledAttributes(
                 attrs, R.styleable.InAppChatWidget);
-
+        mWidgetIcon = getResources().getDrawable(R.drawable.ic_chat_icon);
         if (styleAttrs.hasValue(R.styleable.InAppChatWidget_widgetColor)) {
             mWidgetColor = styleAttrs.getColor(R.styleable.InAppChatWidget_widgetColor, 0xffffff00);
         }
@@ -79,10 +80,11 @@ public class InAppChatWidget extends RelativeLayout {
                 Log.d("mWidgetColor", mWidgetColor + "");
 
                 if (mWidgetIcon != null) {
-                    mProceed.setBackground(mWidgetIcon);
-                } else {
-                    mProceed.setBackground(UiUtils.getCircularGradient(mWidgetColor, mWidgetColor));
+                    mIcChat.setBackground(mWidgetIcon);
                 }
+
+                mProceed.setBackground(UiUtils.getCircularGradient(mWidgetColor, mWidgetColor));
+
 //                if (mWidgetColor != 0xffffff00) {
 //                    mProceed.setBackground(UiUtils.getCircularGradient(mWidgetColor, mWidgetColor));
 //                } else {
