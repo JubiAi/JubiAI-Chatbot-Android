@@ -23,6 +23,7 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
     }
+    
     project.ext {
         chatbot = "1.11" //String
         retrofit = '2.3.0'
