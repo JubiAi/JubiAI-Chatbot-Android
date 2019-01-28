@@ -320,7 +320,8 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageViewHold
         switch (materialTheme) {
             case WHITE:
                 holder.senderPic.setColorFilter(ContextCompat.getColor(context, materialColor.getDark()), android.graphics.PorterDuff.Mode.SRC_IN);
-//                holder.brandLogo.setBackgroundDrawable(Util.drawCircle(context.getResources().getColor(materialColor.getDark())));
+//         holder.brandLogo.setBackgroundDrawable(Util.drawCircle(context.getResources().getColor(materialColor.getDark())));
+                holder.brandLogo.setBackgroundResource(appLogo);
                 holder.arrowSent.setColorFilter(ContextCompat.getColor(context, materialColor.getLight()), android.graphics.PorterDuff.Mode.SRC_IN);
                 holder.arrowRcvd.setColorFilter(ContextCompat.getColor(context, materialColor.getChatBubbleRcvd()), android.graphics.PorterDuff.Mode.SRC_IN);
                 break;
@@ -331,8 +332,10 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageViewHold
 //                holder.arrowRcvd.setColorFilter(ContextCompat.getColor(context, materialColor.getChatBubbleRcvd()), android.graphics.PorterDuff.Mode.SRC_IN);
                 holder.arrowSent.setVisibility(View.INVISIBLE);
                 holder.arrowRcvd.setVisibility(View.INVISIBLE);
+                holder.brandLogo.setBackgroundResource(appLogo);
                 break;
             default:
+                holder.brandLogo.setBackgroundResource(appLogo);
                 holder.arrowSent.setColorFilter(ContextCompat.getColor(context, materialColor.getRegular()), android.graphics.PorterDuff.Mode.SRC_IN);
                 holder.arrowRcvd.setColorFilter(ContextCompat.getColor(context, materialColor.getChatBubbleRcvd()), android.graphics.PorterDuff.Mode.SRC_IN);
                 holder.senderPic.setColorFilter(ContextCompat.getColor(context, materialColor.getLight()), android.graphics.PorterDuff.Mode.SRC_IN);

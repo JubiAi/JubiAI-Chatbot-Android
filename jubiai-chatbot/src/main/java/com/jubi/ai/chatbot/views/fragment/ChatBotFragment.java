@@ -230,6 +230,8 @@ public class ChatBotFragment extends Fragment implements ChatBotView, View.OnCli
 
         mute.setAlpha(0.3f);
 
+        Log.d("DATA ::==>", chatBotConfig.getAppLogo() + "");
+
         chatMessageAdapter = new ChatMessageAdapter(getActivity(), new ArrayList<ChatMessage>(), chatBotConfig.getMaterialTheme(), chatBotConfig.getAppLogo(), getScreenHeight());
         chatMessageAdapter.setItemClickListener(new IResultListener<View>() {
             @Override
@@ -625,7 +627,7 @@ public class ChatBotFragment extends Fragment implements ChatBotView, View.OnCli
         speechCont.setVisibility(View.GONE);
         mic.setVisibility(View.VISIBLE);
         if (!Util.textIsEmpty(result)) {
-            chatBotPresenter.sendChat(message.getText().toString());
+            chatBotPresenter.sendChat(result);
             message.setText("");
             chatBotPresenter.startFakeTypingMessageListener();
         } else {

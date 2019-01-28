@@ -8,7 +8,7 @@ buildscript {
         maven { url "https://jitpack.io" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0-alpha18'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.google.gms:google-services:3.2.0'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
@@ -24,7 +24,7 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
     project.ext {
-        chatbot = "1.10" //String
+        chatbot = "1.11" //String
         retrofit = '2.3.0'
         amazon = '2.6.27'
         room = '1.1.1'

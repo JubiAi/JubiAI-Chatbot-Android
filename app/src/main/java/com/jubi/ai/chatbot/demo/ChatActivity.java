@@ -41,23 +41,18 @@ public class ChatActivity extends AppCompatActivity {
 
     private ChatBotConfig chatBotConfig() {
         ChatBotConfig chatBotConfig = new ChatBotConfig();
-        chatBotConfig.setAppLogo(R.drawable.ic_early_salary_logo);
-        chatBotConfig.setMaterialTheme(MaterialTheme.EARLY_SALARY);
-        chatBotConfig.setTitle("Earl");
-        chatBotConfig.setSubTitle("Hello! Ask me anything");
-        chatBotConfig.setProjectId("JUBIzMjyA_sasasasas");
+        chatBotConfig.setAppLogo(R.drawable.ic_icici_logo);
+        chatBotConfig.setMaterialTheme(MaterialTheme.ICICI);
+        chatBotConfig.setTitle("ICICI");
+        chatBotConfig.setAttachmentRequired(false);
+        chatBotConfig.setSubTitle("Your virtual assistant");
+        chatBotConfig.setProjectId("JUBIglSWd_amazon");
         chatBotConfig.setPath("android");
-        chatBotConfig.setHost("https://product-test-backend.herokuapp.com");
+        chatBotConfig.setHost("http://132.145.44.1:8000");
+        chatBotConfig.setSpeechRequired(true);
         chatBotConfig.setFcmToken(FirebaseInstanceId.getInstance().getToken());
         chatBotConfig.setWidgetRequired(false);
         chatBotConfig.setPersistentMenu("Start Over," +
-                "Statement of Account," +
-                "EarlySalary Products," +
-                "Find my Eligibility," +
-                "Operational Cities," +
-                "EarlySalary Benefits," +
-                "Repayment Options," +
-                "Talk To agent," +
                 "Cancel conversation");
         return chatBotConfig;
     }
